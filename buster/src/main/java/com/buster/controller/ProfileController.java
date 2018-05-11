@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/**")
 @RestController
 
-public class ProfilingController {
+public class ProfileController {
   @RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
 
   public Profile index() {
