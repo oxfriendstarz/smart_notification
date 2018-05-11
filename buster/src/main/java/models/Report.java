@@ -9,9 +9,10 @@ import java.util.Calendar;
 public class Report
 {
 
-    public Report(String _penName, String _type){
+    public Report(String _penName, String _type, String _description){
         penName=_penName;
         type=_type;
+        description=_description;
         id=(long)(Math.random()*1000000000000L);
 
         location = new Location().getCurrentLocation();
@@ -20,6 +21,7 @@ public class Report
     }
 
     public String penName;
+    public String description;
     public Location location;
     public String type;
     public long id;
