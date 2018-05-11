@@ -16,7 +16,7 @@ public class Profile {
     return type;
   }
 
-  public String getLength() {
+  public int getLength() {
     return length;
   }
 
