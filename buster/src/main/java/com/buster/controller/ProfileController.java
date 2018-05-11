@@ -11,14 +11,14 @@ public class ProfileController {
 
     @ResponseBody
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> getUser(@PathVariable("id") String id) {
+    public ResponseEntity<Profile> getUser(@PathVariable("id") String id) {
         Profile profile = new Profile("green", 10, 7);
         return new ResponseEntity<Profile>(profile, HttpStatus.OK);
     }
 
     @ResponseBody
     @RequestMapping(value = "/user/login", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> login(@RequestParam("username") int username,
+    public ResponseEntity<String> login(@RequestParam("username") int username,
                                    @RequestParam("password") int password) {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
