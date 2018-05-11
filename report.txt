@@ -1,0 +1,6 @@
+class report
+{
+     public String location;
+     public String type;
+     public boolean isAssured;
+}

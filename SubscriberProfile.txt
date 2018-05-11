@@ -1,0 +1,8 @@
+class SubscriberProfile
+{
+ public String name;
+ public double rating;
+ public ContactInformation contactInformation;
+ public report[] reports;
+ 
+}
