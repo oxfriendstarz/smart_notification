@@ -13,6 +13,6 @@ import org.springframework.stereotype.Component;
 public class BusterApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BusterApplication.class, args);
+		System.out.print("***********************");
 	}
 }

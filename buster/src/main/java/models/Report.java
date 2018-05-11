@@ -1,21 +1,30 @@
 package models;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  * Created by jdulay on 5/11/2018.
  */
+
 public class Report
 {
-    public Report(String _penName, String _location, String _type){
+
+    public Report(String _penName, String _type){
         penName=_penName;
-        location=_location;
         type=_type;
+        id=(long)(Math.random()*1000000000000L);
+
+        location = new Location().getCurrentLocation();
+        currentTime = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss").format(Calendar.getInstance().getTime());
+
     }
 
     public String penName;
-    public String location;
+    public Location location;
     public String type;
-    public int id;
-    public boolean isAssured;
+    public long id;
+    public String currentTime;
+    public boolean isLegit;
 }
 
 

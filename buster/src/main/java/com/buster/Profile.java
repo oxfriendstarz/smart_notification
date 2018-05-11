@@ -13,6 +13,7 @@ public class Profile {
   }
 
   public String getType() {
+
     return type;
   }
 
