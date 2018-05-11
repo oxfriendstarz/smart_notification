@@ -43,17 +43,24 @@
             <policyMap>
               <policyEntries>
                 <policyEntry topic=">" >
-                    <!-- The constantPendingMessageLimitStrategy is used to prevent
-                         slow topic consumers to block producers and affect other consumers
-                         by limiting the number of messages that are retained
-                         For more information, see:
-
-                         http://activemq.apache.org/slow-consumer-handling.html
-
-                    -->
-                  <pendingMessageLimitStrategy>
-                    <constantPendingMessageLimitStrategy limit="1000"/>
-                  </pendingMessageLimitStrategy>
+			<pendingMessageLimitStrategy>
+                    		<constantPendingMessageLimitStrategy limit="1000"/>
+                  	</pendingMessageLimitStrategy>
+                </policyEntry>
+		<policyEntry topic="crime" >
+			<pendingMessageLimitStrategy>
+                    		<constantPendingMessageLimitStrategy limit="1000"/>
+                  	</pendingMessageLimitStrategy>
+                </policyEntry>
+		<policyEntry topic="emergency" >
+			<pendingMessageLimitStrategy>
+                    		<constantPendingMessageLimitStrategy limit="1000"/>
+                  	</pendingMessageLimitStrategy>
+                </policyEntry>
+		<policyEntry topic="fire" >
+                  	<pendingMessageLimitStrategy>
+                    		<constantPendingMessageLimitStrategy limit="1000"/>
+                  	</pendingMessageLimitStrategy>
                 </policyEntry>
               </policyEntries>
             </policyMap>
