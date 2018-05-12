@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Fit a map to a bounding box</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:20%; bottom:0; width:100%;height:70%; }
+    </style>
+</head>
+<body>
+
+<style>
+    #fit {
+        display: block;
+        position: relative;
+        margin: 0px auto;
+        width: 80%;
+        height: 40px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        color: #fff;
+        background: #ee8a65;
+    }
+
+</style>
+<div id='map'></div>
+<br/>
+<div>
+    <center>
+    <textarea rows="4" cols="900">
+        Enter Description of Report
+    </textarea>
+    Select Report Type:
+    <select>
+      <option value="saab">Crime</option>
+      <option value="mercedes">Accident</option>
+      <option value="volvo">Fire</option>
+      <option value="audi">Typhoon</option>
+      <option value="audi">Flood</option>
+    </select>    
+    </center>
+</div>    
+<button id='fit'>Get location and upload Post</button>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZm1xIiwiYSI6ImNqOW9ha3lreTF4emwzM21pdG5laHBteGEifQ.acSVtD4WjWr4yvLwS1PMuw';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [121.061000, 14.660597],
+    zoom: 8
+});
+
+document.getElementById('fit').addEventListener('click', function() {
+    map.fitBounds([[
+        121.061000,
+        14.660597
+    ], [
+        121.063136,
+        14.661791
+    ]]);
+
+    var popup = new mapboxgl.Popup({closeOnClick: false})
+        .setLngLat([121.062024, 14.661194])
+        .setHTML('<h1>REPORT POSTED at this location!</h1>')
+        .addTo(map);    
+});
+
+</script>
+
+</body>
+</html>
