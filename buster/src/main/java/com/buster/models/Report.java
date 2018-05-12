@@ -128,13 +128,7 @@ public class Report {
         this.downVotes = downVotes;
     }
 
-<<<<<<< HEAD
-    public Report(){}
-
-    public Report(String username, ReportType _type, String _description) {
-=======
     public Report(String username, String _type, String _description) {
->>>>>>> 62db7bcfbece8e095ac4e772693cf33c481a0bf5
         this.username = username;
         type = _type;
         description = _description;
