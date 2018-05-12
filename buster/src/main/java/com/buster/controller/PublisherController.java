@@ -2,18 +2,26 @@ package com.buster.controller;
 
 
 import com.buster.models.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import services.BusterMessageProducer;
 import services.ReportAssuranceService;
 
 import temporary.tempDatabaseKasiHard;
+
+import javax.jms.JMSException;
+
 /**
  * Created by jdulay on 5/11/2018.
  */
 
-@RestController
-@RequestMapping("/publisher")
+@Component
 public class PublisherController {
+
+    @Autowired
+    private BusterMessageProducer messageProducer;
 
     public void receiveReport(Report report){
         System.out.println("==============================");
@@ -33,15 +41,12 @@ public class PublisherController {
             System.out.println("Sending rejected report from user");
         }
 
-        addToExistingPenName(report);
+        try {
+            messageProducer.sendMessage(report);
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
         tempDatabaseKasiHard.reports.add(report);
     }
 
-    public void addToExistingPenName(Report report){
-        for (PublisherProfile temp : tempDatabaseKasiHard.publisherProfile) {
-            if(temp.penName == report.username){
-                temp.reports.add(report);
-            }
-        }
-    }
 }

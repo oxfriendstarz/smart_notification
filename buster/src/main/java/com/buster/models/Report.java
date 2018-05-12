@@ -37,6 +37,9 @@ public class Report {
     @Column(name="type")
     public String type;
 
+    @Column(name="status")
+    public String status;
+
     @Column(name="time")
     public String time;
 
@@ -55,6 +58,14 @@ public class Report {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getUsername() {

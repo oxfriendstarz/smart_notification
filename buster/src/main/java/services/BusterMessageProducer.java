@@ -3,6 +3,7 @@ package services;
 import com.google.gson.Gson;
 import com.buster.models.Report;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.springframework.stereotype.Component;
 
 import javax.jms.Connection;
 import javax.jms.DeliveryMode;
@@ -15,6 +16,7 @@ import javax.jms.TextMessage;
 /**
  * Created by Ramon on 5/12/2018.
  */
+@Component
 public class BusterMessageProducer {
 
     public void sendMessage(Report report) throws JMSException {
