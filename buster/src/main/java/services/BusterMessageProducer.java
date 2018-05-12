@@ -20,7 +20,7 @@ public class BusterMessageProducer {
 
     public void sendMessage(Report report) throws JMSException {
         // Create a ConnectionFactory
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("http://localhost");
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
 
         // Create a Connection
         Connection connection = connectionFactory.createConnection();

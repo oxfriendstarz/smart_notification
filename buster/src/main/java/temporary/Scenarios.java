@@ -8,9 +8,9 @@ import com.buster.models.*;
  */
 public class Scenarios {
     public static void TwoPersonsReported(){
-        PublisherProfile publisher = new PublisherProfile("RJRALD", "RJRALD", "Email@.com", "myAddress", "0998");
+        PublisherProfile publisher = new PublisherProfile("RJRALD", "RJRALD", "RJRALD", "Email@.com", "myAddress", "0998");
         tempDatabaseKasiHard.publisherProfile.add(publisher);
-        PublisherProfile publisher2 = new PublisherProfile("RAMON CAPUNPON", "RAMON", "Email@.com", "myAddress", "0998");
+        PublisherProfile publisher2 = new PublisherProfile("RAMON CAPUNPON", "RAMON", "RJRALD", "Email@.com", "myAddress", "0998");
         tempDatabaseKasiHard.publisherProfile.add(publisher);
 
         Report report = new Report("RJRALD", BusterConstants.ReportType.CRIME, "si jas sinasaksak");
@@ -21,7 +21,7 @@ public class Scenarios {
     }
 
     public static void OneReportedButFalseAlarm(){
-        PublisherProfile publisher = new PublisherProfile("RJRALD", "RJRALD", "Email@.com", "myAddress", "0998");
+        PublisherProfile publisher = new PublisherProfile("RJRALD", "RJRALD", "RJRALD", "Email@.com", "myAddress", "0998");
         tempDatabaseKasiHard.publisherProfile.add(publisher);
 
         Report report = new Report("RJRALD",BusterConstants.ReportType.CRIME, "si jas sinasaksak");

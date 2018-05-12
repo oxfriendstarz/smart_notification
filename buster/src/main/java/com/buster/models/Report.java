@@ -128,6 +128,8 @@ public class Report {
         this.downVotes = downVotes;
     }
 
+    public Report(){}
+
     public Report(String username, ReportType _type, String _description) {
         this.username = username;
         type = _type.getTitle();

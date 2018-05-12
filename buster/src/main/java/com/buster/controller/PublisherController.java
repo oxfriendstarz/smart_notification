@@ -24,7 +24,7 @@ public class PublisherController {
     public void receiveReport(Report report){
         System.out.println("==============================");
         System.out.println(report.username +" have Reported a "+report.type + "-"+report.description
-                + " at Location (" + report.location.Latitude + ","+report.location.Longitude+") "+report.location.MarkedLocation);
+                + " at Location (" + report.location.latitude + ","+report.location.longitude +") "+report.location.markedLocation);
         //receive post from publisher
 
         //check post Credibility

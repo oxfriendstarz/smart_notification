@@ -1,7 +1,6 @@
 package com.buster.models;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -11,36 +10,36 @@ import javax.validation.constraints.NotNull;
 public class Location {
 
     @NotNull
-    public double Latitude = 14.661194;
+    public double latitude = 14.661194;
 
     @NotNull
-    public double Longitude = 121.062024;
+    public double longitude = 121.062024;
 
     @NotNull
-    public String MarkedLocation = "BLDG O, UP Technohub, Commonwealth Avenue, UP Ayala Land Technohub, Quezon City, 1121";
+    public String markedLocation = "BLDG O, UP Technohub, Commonwealth Avenue, UP Ayala Land Technohub, Quezon City, 1121";
 
     public double getLatitude() {
-        return Latitude;
+        return latitude;
     }
 
     public void setLatitude(double latitude) {
-        Latitude = latitude;
+        this.latitude = latitude;
     }
 
     public double getLongitude() {
-        return Longitude;
+        return longitude;
     }
 
     public void setLongitude(double longitude) {
-        Longitude = longitude;
+        this.longitude = longitude;
     }
 
     public String getMarkedLocation() {
-        return MarkedLocation;
+        return markedLocation;
     }
 
     public void setMarkedLocation(String markedLocation) {
-        MarkedLocation = markedLocation;
+        this.markedLocation = markedLocation;
     }
 
     public Location getCurrentLocation(){
