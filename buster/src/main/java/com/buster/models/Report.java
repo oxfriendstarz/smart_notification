@@ -132,10 +132,15 @@ public class Report {
         this.downVotes = downVotes;
     }
 
-    public Report(String username, ReportType _type, String _description) {
+    public Report(String username, String _type, String _description) {
         this.username = username;
-        type = _type.getTitle();
+        type = _type;
         description = _description;
+        location = new Location().getCurrentLocation();
+        time = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss").format(Calendar.getInstance().getTime());
+    }
+
+    public Report(){
         location = new Location().getCurrentLocation();
         time = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss").format(Calendar.getInstance().getTime());
     }
