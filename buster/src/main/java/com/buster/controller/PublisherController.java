@@ -19,9 +19,11 @@ import javax.jms.JMSException;
 
 @Component
 public class PublisherController {
-
-    @Autowired
     private BusterMessageProducer messageProducer;
+
+    public PublisherController() {
+        messageProducer = new BusterMessageProducer();
+    }
 
     public void receiveReport(Report report){
         System.out.println("==============================");
