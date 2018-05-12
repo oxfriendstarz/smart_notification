@@ -1,7 +1,7 @@
 package services;
 
-import models.PublisherProfile;
-import models.Report;
+import com.buster.models.PublisherProfile;
+import com.buster.models.Report;
 import temporary.tempDatabaseKasiHard;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class ReportAssuranceService {
         // reporters rating
         ArrayList<Report> publishersReports  = new ArrayList<Report>();
         for (PublisherProfile temp : tempDatabaseKasiHard.publisherProfile) {
-            if(temp.penName == report.penName){
+            if(temp.penName == report.username){
                 publishersReports = temp.reports;
             }
         }

@@ -1,7 +1,7 @@
 package temporary;
 
 import com.buster.controller.PublisherController;
-import models.*;
+import com.buster.models.*;
 
 /**
  * Created by jdulay on 5/12/2018.

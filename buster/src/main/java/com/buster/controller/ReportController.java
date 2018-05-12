@@ -1,9 +1,10 @@
 package com.buster.controller;
 
-import models.BusterConstants;
-import models.Report;
+import com.buster.models.BusterConstants;
+import com.buster.models.Report;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,5 +23,14 @@ public class ReportController {
     public ResponseEntity<Report> getAllPosts() {
         //TODO: get posts from DB
         return new ResponseEntity<>(new Report("test", BusterConstants.ReportType.CRIME,"test"), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/new/user/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> newReport(@RequestBody Report report) {
+
+        //TODO: dito magccreate ng report
+
+        return new ResponseEntity<String>("created report", HttpStatus.OK);
     }
 }

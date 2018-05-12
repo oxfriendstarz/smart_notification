@@ -1,7 +1,7 @@
 package services;
 
 import com.google.gson.Gson;
-import models.Report;
+import com.buster.models.Report;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.Connection;
@@ -28,7 +28,7 @@ public class BusterMessageProducer {
         // Create a Session
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-        Destination destination = session.createQueue(report.type.getTitle());
+        Destination destination = session.createQueue(report.type);
 
         // Create a MessageProducer from the Session to the Topic or Queue
         MessageProducer producer = session.createProducer(destination);
