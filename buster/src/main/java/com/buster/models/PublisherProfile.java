@@ -35,9 +35,10 @@ public class PublisherProfile
     @Column(name="rating")
     public double rating;
 
-    public PublisherProfile(String fullName, String username, String email, String address, String mobile){
+    public PublisherProfile(String fullName, String username, String password, String email, String address, String mobile){
         this.fullName = fullName;
         this.username = username;
+        this.password = password;
         contactInformation = new ContactInformation(email,address,mobile);
     }
 

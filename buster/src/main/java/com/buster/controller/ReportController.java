@@ -49,7 +49,7 @@ public class ReportController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/update/report/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/update/report/{id}", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> updateReport(@RequestBody Report report) {
         report.setStatus("update");
         reportRepository.save(report);
