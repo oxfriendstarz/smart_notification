@@ -13,7 +13,10 @@ export class ContactPage {
   }
 
   profile = {};
-  
+
+  post(apiUrl: string, data: any = {}) {
+    return this.http.post(apiUrl, JSON.stringify(data));
+  }
 
   subscribeForm() {
   	console.log(this.profile)

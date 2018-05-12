@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 
 @Component({
@@ -15,7 +15,11 @@ export class HomePage {
 
   security = {
     lat: 0,
-    lng: 0
+    lng: 0,
+    base64Image: "",
+    description: "",
+    hashtag: "",
+    avatar64: ""
   }
 
   constructor(public navCtrl: NavController, private camera: Camera, public http: Http, private geolocation: Geolocation) {
@@ -33,9 +37,25 @@ export class HomePage {
       this.security.lng = data.coords.longitude
     })
   }
+  post(apiUrl: string, data: any = {}) {
+    let headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    return this.http.post(apiUrl, JSON.stringify(data), headers);
+  }
 
   logForm() {
-    console.log(this.security)
+    this.post("http://192.168.56.1:8080/report/new/user/ionic", {
+      username: "jas",
+      type: "crime",
+      location: {
+        markedLocation: "up",
+        longitude: this.security.lng,
+        latitude: this.security.lat,
+      },
+      hashtag: this.security.hashtag,
+      description: this.security.description,
+      image: this.security.base64Image
+    }).subscribe(data => {alert(data)});
+    alert("Successfully report.");
   }
 
   takePicture(){
@@ -47,8 +67,8 @@ export class HomePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-      console.log(base64Image);
+      this.security.avatar64 = "data:image/jpeg;base64," + imageData;
+      this.security.base64Image = imageData;
     }, (err) => {
       console.log(err);
     });
