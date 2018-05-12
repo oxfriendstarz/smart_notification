@@ -1,6 +1,4 @@
-package models;
-
-import java.util.ArrayList;
+package com.buster.models;
 
 /**
  * Created by jdulay on 5/11/2018.

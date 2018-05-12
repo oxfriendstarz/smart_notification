@@ -1,4 +1,4 @@
-package models;
+package com.buster.models;
 
 /**
  * Created by jdulay on 5/11/2018.

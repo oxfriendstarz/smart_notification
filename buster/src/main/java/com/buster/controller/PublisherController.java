@@ -1,28 +1,33 @@
 package com.buster.controller;
 
 
-import models.*;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.buster.models.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import services.BusterMessageProducer;
 import services.ReportAssuranceService;
 
-import temporary.Scenarios;
 import temporary.tempDatabaseKasiHard;
+
+import javax.jms.JMSException;
+
 /**
  * Created by jdulay on 5/11/2018.
  */
 
-@RestController
-@RequestMapping("/publisher")
+@Component
 public class PublisherController {
+    private BusterMessageProducer messageProducer;
+
+    public PublisherController() {
+        messageProducer = new BusterMessageProducer();
+    }
 
     public void receiveReport(Report report){
         System.out.println("==============================");
-        System.out.println(report.penName +" have Reported a "+report.type + "-"+report.description
+        System.out.println(report.username +" have Reported a "+report.type + "-"+report.description
                 + " at Location (" + report.location.Latitude + ","+report.location.Longitude+") "+report.location.MarkedLocation);
         //receive post from publisher
 
@@ -38,15 +43,12 @@ public class PublisherController {
             System.out.println("Sending rejected report from user");
         }
 
-        addToExistingPenName(report);
+        try {
+            messageProducer.sendMessage(report);
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
         tempDatabaseKasiHard.reports.add(report);
     }
 
-    public void addToExistingPenName(Report report){
-        for (PublisherProfile temp : tempDatabaseKasiHard.publisherProfile) {
-            if(temp.penName == report.penName){
-                temp.reports.add(report);
-            }
-        }
-    }
 }

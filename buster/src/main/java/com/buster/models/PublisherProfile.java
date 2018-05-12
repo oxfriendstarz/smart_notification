@@ -1,4 +1,4 @@
-package models;
+package com.buster.models;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ public class PublisherProfile
         contactInformation = new ContactInformation(_email,_address,_mobileNumber);
         legitimacyRating = 100;
         System.out.println("NEW PUBLISHER WAS ADDED");
-        System.out.println("penName"+"\t"+penName);
+        System.out.println("username"+"\t"+penName);
     }
     public String realName;
     public String penName;

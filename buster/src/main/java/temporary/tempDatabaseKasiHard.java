@@ -1,6 +1,6 @@
 package temporary;
 
-import models.*;
+import com.buster.models.*;
 
 import java.util.ArrayList;
 
