@@ -1,9 +1,0 @@
-class ContactInformation 
-{ 
-    public String email;
-    public String address;
-    public int mobileNumber;
-}
-
-
-//report
