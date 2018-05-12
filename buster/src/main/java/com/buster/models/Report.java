@@ -128,12 +128,21 @@ public class Report {
         this.downVotes = downVotes;
     }
 
+<<<<<<< HEAD
     public Report(){}
 
     public Report(String username, ReportType _type, String _description) {
+=======
+    public Report(String username, String _type, String _description) {
+>>>>>>> 62db7bcfbece8e095ac4e772693cf33c481a0bf5
         this.username = username;
-        type = _type.getTitle();
+        type = _type;
         description = _description;
+        location = new Location().getCurrentLocation();
+        time = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss").format(Calendar.getInstance().getTime());
+    }
+
+    public Report(){
         location = new Location().getCurrentLocation();
         time = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss").format(Calendar.getInstance().getTime());
     }
