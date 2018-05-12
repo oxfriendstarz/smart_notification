@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Registration
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="subscribeForm()">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" stacked>Name</ion-label>
+        <ion-input [(ngModel)]="profile.name" name="name" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Pen Name</ion-label>
+        <ion-input [(ngModel)]="profile.penname" name="penname" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Email Address</ion-label>
+        <ion-input [(ngModel)]="profile.email" name="email" type="email" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address</ion-label>
+        <ion-textarea [(ngModel)]="profile.addresss" name="address"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button ion-button type="submit" block>Subscribe</button>
+  </form> 
+
+</ion-content>
