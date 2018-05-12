@@ -1,11 +1,13 @@
 package com.buster.controller;
 
 
+import com.buster.Profile;
 import com.buster.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import services.BusterMessageProducer;
 import services.ReportAssuranceService;
 
@@ -18,8 +20,17 @@ import javax.jms.JMSException;
  */
 
 @Component
+@RestController
+@RequestMapping("/profile")
 public class PublisherController {
     private BusterMessageProducer messageProducer;
+
+    @ResponseBody
+    @RequestMapping(value = "/user/report", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<?> report(@RequestBody String profile) {
+        System.out.println("***********************************************");
+        return new ResponseEntity<>("Success", HttpStatus.OK);
+    }
 
     public PublisherController() {
         messageProducer = new BusterMessageProducer();
