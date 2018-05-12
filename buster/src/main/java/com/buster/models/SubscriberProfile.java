@@ -1,8 +1,11 @@
 package com.buster.models;
 
+import javax.persistence.Entity;
+
 /**
  * Created by jdulay on 5/11/2018.
  */
+
 public class SubscriberProfile
 {
     public SubscriberProfile(String _realName, String _penName, String _email, String _address, String _mobileNumber){
@@ -12,6 +15,7 @@ public class SubscriberProfile
         legitimacyRating = 100;
         System.out.println("NEW SUBSCRIBER WAS ADDED");
     }
+
     public String realName;
     public String penName;
     public double legitimacyRating;

@@ -32,8 +32,7 @@ public class Scenarios {
         SubscriberProfile subscriber = new SubscriberProfile("RJRALD", "RJRALD", "Email@.com", "myAddress", "0998");
 
         //Subscriber set the report as fake report
-        System.out.println(subscriber.realName +" has marked "+publisher.penName+ " as fake report");
-        publisher.reports.get(0).isLegit = false;
+        System.out.println(subscriber.realName +" has marked "+publisher.username + " as fake report");
 
         Report report2 = new Report("RJRALD",BusterConstants.ReportType.CRIME, "may binabaril naman ulet");
         publisherController.receiveReport(report2);

@@ -2,6 +2,8 @@ package services;
 
 import com.buster.models.PublisherProfile;
 import com.buster.models.Report;
+import com.buster.repository.ReportRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import temporary.tempDatabaseKasiHard;
 
 import java.util.ArrayList;
@@ -14,6 +16,10 @@ public class ReportAssuranceService {
     private double reporterAssuranceCoefficient;
     private double assuranceCoefficient;
     private Report report;
+
+    @Autowired
+    private ReportRepository reportRepository;
+
     public ReportAssuranceService(Report _report)
     {
         report = _report;
@@ -45,11 +51,6 @@ public class ReportAssuranceService {
         // get reporters profile at database via penname
         // reporters rating
         ArrayList<Report> publishersReports  = new ArrayList<Report>();
-        for (PublisherProfile temp : tempDatabaseKasiHard.publisherProfile) {
-            if(temp.penName == report.username){
-                publishersReports = temp.reports;
-            }
-        }
 
         if(publishersReports.size()==0){
             return 1;

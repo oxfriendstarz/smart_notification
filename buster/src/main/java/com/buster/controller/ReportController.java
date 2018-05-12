@@ -6,6 +6,7 @@ import com.buster.repository.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,10 +30,10 @@ public class ReportController {
     private PublisherController publisherController;
 
     @ResponseBody
-    @RequestMapping(value = "/all/user/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<Report>> getAllPosts() {
+    @RequestMapping(value = "/all/user/{username}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<Report>> getAllPostsByUser(@PathVariable("username") String username) {
 
-        List<Report> reportList = reportRepository.findAll();
+        List<Report> reportList = reportRepository.findByUsername(username);
 
         //TODO: get posts from DB
         return new ResponseEntity<List<Report>>(reportList, HttpStatus.OK);

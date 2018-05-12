@@ -20,17 +20,8 @@ import javax.jms.JMSException;
  */
 
 @Component
-@RestController
-@RequestMapping("/profile")
 public class PublisherController {
     private BusterMessageProducer messageProducer;
-
-    @ResponseBody
-    @RequestMapping(value = "/user/report", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> report(@RequestBody String profile) {
-        System.out.println("***********************************************");
-        return new ResponseEntity<>("Success", HttpStatus.OK);
-    }
 
     public PublisherController() {
         messageProducer = new BusterMessageProducer();
