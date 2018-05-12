@@ -2,6 +2,12 @@ package com.buster.controller;
 
 
 import models.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import services.ReportAssuranceService;
 
 import temporary.Scenarios;
@@ -10,14 +16,9 @@ import temporary.tempDatabaseKasiHard;
  * Created by jdulay on 5/11/2018.
  */
 
-
+@RestController
+@RequestMapping("/publisher")
 public class PublisherController {
-
-
-    public static void main(String[] args) {
-//        Scenarios.TwoPersonsReported();
-        Scenarios.OneReportedButFalseAlarm();
-    }
 
     public void receiveReport(Report report){
         System.out.println("==============================");
@@ -39,7 +40,6 @@ public class PublisherController {
 
         addToExistingPenName(report);
         tempDatabaseKasiHard.reports.add(report);
-        //send to message broker
     }
 
     public void addToExistingPenName(Report report){
