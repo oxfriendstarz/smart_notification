@@ -1,5 +1,6 @@
 package services;
 
+import com.google.gson.Gson;
 import models.Report;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -27,15 +28,15 @@ public class BusterMessageProducer {
         // Create a Session
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-        Destination destination = session.createQueue(report.type);
+        Destination destination = session.createQueue(report.type.getTitle());
 
         // Create a MessageProducer from the Session to the Topic or Queue
         MessageProducer producer = session.createProducer(destination);
         producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
         //TODO: eto yung gagawing message, mas okay na json to galing dun sa report class
-        String text = "Hello world! From: " + Thread.currentThread().getName() + " : " + this.hashCode();
-
+        Gson gson = new Gson();
+        String text = gson.toJson(report);
 
         TextMessage message = session.createTextMessage(text);
 
