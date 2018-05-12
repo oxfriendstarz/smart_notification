@@ -1,5 +1,6 @@
 package com.buster.controller;
 
+import models.BusterConstants;
 import models.Report;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,6 @@ public class ReportController {
     @RequestMapping(value = "/all/user/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Report> getAllPosts() {
         //TODO: get posts from DB
-        return new ResponseEntity<>(new Report("test", "test","test"), HttpStatus.OK);
+        return new ResponseEntity<>(new Report("test", BusterConstants.ReportType.CRIME,"test"), HttpStatus.OK);
     }
 }
